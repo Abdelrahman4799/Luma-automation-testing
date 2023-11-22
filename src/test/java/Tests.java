@@ -7,9 +7,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 
 import java.util.Random;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Tests {
     public static WebDriver driver;
@@ -31,6 +32,8 @@ public class Tests {
     static void closeDriver() {
         driver.quit();
     }
+
+
     @ParameterizedTest
     @DisplayName("Login with valid and invalid data")
     @CsvSource(value = {"abdelrahman1234@yahoo.com,12345678910Abdelrahman" , "ahmed@yahoo.com,102030504052"})
@@ -45,7 +48,7 @@ public class Tests {
         driver.findElement(By.id("send2")).click();
         String actualTitle = driver.getTitle();
         String expectedTitle = "Home Page";
-        Assert.assertEquals(actualTitle, expectedTitle,"The actual and expected title don’t match");
+        assertEquals(actualTitle, expectedTitle);
     }
 
     @Test
@@ -73,7 +76,7 @@ public class Tests {
 
         String actualTitle = driver.getTitle();
         String expectedTitle = "My Account";
-        Assert.assertEquals(actualTitle, expectedTitle,"The actual and expected title don’t match");
+        assertEquals(actualTitle, expectedTitle);
     }
 
 }
